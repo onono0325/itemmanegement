@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http:/www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>商品管理フォーム</title>
+</head>
+<body>
+
+<div><a th:href="@{/add}">登録する</a></div>
+	<table class="table table-bordered">
+		<thead>
+			<tr>
+				<th>#</th>
+				<th>名前</th>
+				<th>値段</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="member :${members}" th:object="${member}" th:inline="text">
+				
+				<td>[[${member.id}]]</td>
+				<td>[[${member.name}]]</td>
+				<td>[[${member.price}]]</td>
+				<td>
+				  <a th:href="@{/edit/{id}(id=*{id})}">
+				    <button>編集</button>
+				  </a> 
+				  <a th:href="@{/delete/{id}(id=*{id})}">
+				    <button>削除</button>
+				  </a>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>
